@@ -27,16 +27,16 @@ resource "aws_instance" "dev" {
   vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
 }
 
-resource "aws_instance" "dev4" {
+resource "aws_instance" "homolog" {
   ami           = var.amis["us-east-1"]
   instance_type = "t2.micro"
   key_name      = var.key_name
   tags = {
-    Name = "dev4"
+    Name = "homolog"
   }
   vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
   depends_on = [
-    aws_s3_bucket.dev4
+    aws_s3_bucket.homolog
   ]
 }
 
@@ -75,11 +75,11 @@ resource "aws_instance" "dev7" {
   vpc_security_group_ids = ["${aws_security_group.allow_ssh_us_east_2.id}"]
 }
 
-resource "aws_s3_bucket" "dev4" {
-  bucket = "jjeanjacques10-dev4"
+resource "aws_s3_bucket" "homolog" {
+  bucket = "jjeanjacques10-homolog"
 
   tags = {
-    Name = "jjeanjacques10-dev4"
+    Name = "jjeanjacques10-homolog"
   }
 }
 
