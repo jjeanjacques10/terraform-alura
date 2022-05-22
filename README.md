@@ -7,6 +7,7 @@ Curso de terraforma da Alura
 - EC2
 - Security Groups
 - S3 Buckets
+- DynamoDB
 
 ## Comandos
 

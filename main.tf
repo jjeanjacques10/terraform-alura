@@ -20,7 +20,7 @@ resource "aws_instance" "dev" {
   count         = 2
   ami           = var.amis["us-east-1"]
   instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  key_name      = var.key_name
   tags = {
     Name = "dev${count.index}"
   }
@@ -30,7 +30,7 @@ resource "aws_instance" "dev" {
 resource "aws_instance" "dev4" {
   ami           = var.amis["us-east-1"]
   instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  key_name      = var.key_name
   tags = {
     Name = "dev4"
   }
@@ -43,7 +43,7 @@ resource "aws_instance" "dev4" {
 resource "aws_instance" "dev5" {
   ami           = var.amis["us-east-1"]
   instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  key_name      = var.key_name
   tags = {
     Name = "dev5"
   }
@@ -54,7 +54,7 @@ resource "aws_instance" "dev6" {
   provider      = aws.aws-us-east-2 # Change provider to us-east-2
   ami           = var.amis["us-east-2"]
   instance_type = "t2.micro"
-  key_name      = "terraform-aws"
+  key_name      = var.key_name
   tags = {
     Name = "dev6"
   }
@@ -62,6 +62,17 @@ resource "aws_instance" "dev6" {
   depends_on = [
     aws_dynamodb_table.dynamodb-homologacao
   ]
+}
+
+resource "aws_instance" "dev7" {
+  provider      = aws.aws-us-east-2 # Change provider to us-east-2
+  ami           = var.amis["us-east-2"]
+  instance_type = "t2.micro"
+  key_name      = var.key_name
+  tags = {
+    Name = "dev7"
+  }
+  vpc_security_group_ids = ["${aws_security_group.allow_ssh_us_east_2.id}"]
 }
 
 resource "aws_s3_bucket" "dev4" {

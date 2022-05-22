@@ -23,7 +23,7 @@ resource "aws_security_group" "allow_ssh_us_east_2" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["<your ip>"]
+    cidr_blocks = var.cdirs_remote_access
   }
 
   tags = {
