@@ -36,6 +36,16 @@ terraform destroy
 terraform show 
 ```
 
+- Deleta um recurso específico
+``` bash
+terraform destroy -target aws_instance.dev4 
+```
+
+- O Refresh atualiza o estado atual do ambiente
+``` bash
+terraform refresh 
+```
+
 ## Anotações
 
 - O arquivo terraform.tfstate tem as informações de como configuramos nosso ambiente com todos os campos, até os que ficam ocultos.
